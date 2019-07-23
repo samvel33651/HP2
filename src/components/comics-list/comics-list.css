@@ -1,0 +1,7 @@
+.comics-list {
+  margin-top: 40px;
+}
+
+.comics-list div {
+    display: inline-block;
+}

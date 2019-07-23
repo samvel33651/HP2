@@ -1,6 +1,6 @@
-import MapiService from './services/MapiService';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/app';
 
-const mapi = new MapiService();
-mapi.getAllSeries().then((data) => {
-  console.log(data);
-});
+ReactDOM.render(<App />,
+  document.getElementById('root'));
