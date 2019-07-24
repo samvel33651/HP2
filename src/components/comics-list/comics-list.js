@@ -10,18 +10,17 @@ class ComicsList extends Component {
     this.state= {
       comics:[]
     }
-    console.log('constructore()')
   }
 
   componentDidMount(){
     this.mapiService.getAllComics()
       .then((comics) => {
-        console.log(comics);
         this.setState({
           comics: comics
         });
       })
   }
+
 
   renderComics() {
     const  {comics} = this.state;
