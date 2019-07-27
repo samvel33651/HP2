@@ -1,0 +1,23 @@
+.characters-container {
+    margin-top: 50px;
+    width: 100%;
+    display: inline-block;
+}
+
+.characters-container .list-group {
+    width: 450px;
+    height: 500px;
+    overflow-y: auto;
+    display: inline-block;
+}
+
+.characters-container .list-group .list-group-item {
+   color: #444;
+   background-color: #adb5bd;
+   border: 1px solid black;
+}
+
+.characters-container .list-group .list-group-item.active {
+    background-color: #337ab7;
+    border-color: #337ab7;
+}

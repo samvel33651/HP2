@@ -1,6 +1,7 @@
 import React from 'react';
 import Header  from '../header';
 import ComicsList from '../comics-list';
+import CharactersList from '../characters-list';
 import  './app.css';
 
 const  App = () => {
@@ -8,7 +9,8 @@ const  App = () => {
     <div>
       <Header />
       <div className="container-fluid">
-        <ComicsList />
+        {/* <ComicsList /> */}
+        <CharactersList />
       </div>
     </div>
   );
