@@ -1,4 +1,5 @@
 import  React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import MapiService from '../../services/MapiService';
 
 import  './comics-list.css';
@@ -7,13 +8,16 @@ class ComicsList extends Component {
   constructor(){
     super();
     this.mapiService = new MapiService();
+
     this.state= {
       comics:[]
     }
   }
 
   componentDidMount(){
-    this.mapiService.getAllComics()
+    const {getData} = this.props;
+    // this.mapiService.getAllComics()
+    getData.getAllComics()
       .then((comics) => {
         this.setState({
           comics: comics
@@ -43,6 +47,10 @@ class ComicsList extends Component {
       </div>
     );
   }
+}
+
+ComicsList.propTypes = {
+  getData: PropTypes.object.isRequired
 }
 
 export default ComicsList;

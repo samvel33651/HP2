@@ -1,4 +1,5 @@
 import  React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import MapiService from '../../services/MapiService';
 
 import  './character-details.css';
@@ -24,8 +25,8 @@ class CharacterDetails extends Component {
     }
 
     updateCharacter = () => {
-        const  { selectedCharacterID } = this.props;
-        this.mapiService.getCharacter(selectedCharacterID)
+        const  { selectedCharacterID, getCharacterData } = this.props;
+        getCharacterData.getCharacter(selectedCharacterID)
             .then((character) => {
                 this.setState({
                     character: character[0]
@@ -51,6 +52,10 @@ class CharacterDetails extends Component {
             
         )
     }
+}
+
+CharacterDetails.propTypes = {
+    getCharacterData: PropTypes.object.isRequired
 }
 
 export default CharacterDetails;

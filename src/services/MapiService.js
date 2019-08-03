@@ -9,42 +9,42 @@ class MapiService {
     return await  res.json();
   }
 
-  async getAllComics() {
+  getAllComics = async () => {
     const  resposne =  await this.getResource('/comics');
     return resposne.data.results;
   }
 
-  async getAllCharacters() {
+  getAllCharacters = async () => {
     const  resposne =  await this.getResource('/characters');
     return resposne.data.results;
   }
 
-  async getAllSeries() {
+  getAllSeries = async () => {
     const  resposne =  await this.getResource('/series');
     return resposne.data.results;
   }
 
-  async getAllStories() {
+  getAllStories = async () => {
     const  resposne =  await this.getResource('/stories');
     return resposne.data.results;
   }
 
-  async getComic(id) {
+  getComic = async (id) => {
     const  resposne =  await this.getResource(`/comics/${id}`);
     return resposne.data.results;
   }
 
-  async getCharacter(id) {
+  getCharacter = async (id) => {
     const  resposne =  await this.getResource(`/characters/${id}`)
     return resposne.data.results;
   }
 
-  async getSeries(id) {
+  getSeries = async (id) => {
     const  resposne =  await this.getResource(`/series/${id}`);
     return resposne.data.results;
   }
 
-  async getStory(id) {
+  getStory = async (id) => {
     const  resposne =  await this.getResource(`/stories/${id}`);
     return resposne.data.results;
   }

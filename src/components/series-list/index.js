@@ -1,6 +1,3 @@
-import MapiService from '../../services/MapiService';
+import SeriesList  from './series-list';
 
-const mapi = new MapiService();
-mapi.getAllSeries().then((data) => {
-  console.log(data);
-});
+export  default SeriesList;

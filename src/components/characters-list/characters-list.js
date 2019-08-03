@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import MapiService from '../../services/MapiService';
+import PropTypes from 'prop-types';
 import CharacterDetails from '../character-details';
-
+import ItemsList from '../items-list'
+ 
 import  './characters-list.css';
 
-class CharacterList extends  Component {
+class CharactersList extends  Component {
+   
     constructor() {
         super();
-        this.mapiService = new MapiService();
         this.state = {
             characters: [],
             selectedCharacter: 1011334,
@@ -15,44 +16,41 @@ class CharacterList extends  Component {
     }
 
     componentDidMount() {
-        this.mapiService.getAllCharacters()
-            .then((characters) => {
-                this.setState({
-                    characters
-                });
-            })
+        const  { getData } = this.props;
+        getData.getAllCharacters().then((characters) => {
+            this.setState({
+                characters
+            });
+        })
     }
 
-    selectCharacter =  (event) => {
-        const  selectedCharacter = event.target.dataset.id;
+    selectCharacter =  (selectedCharacter) => {
         this.setState({
             selectedCharacter
         })
     }
 
-    renderCharacterList () {
-        const  {characters, selectedCharacter} = this.state;
-        return characters.map((character)=> {
-            const  clazz = +selectedCharacter === +character.id ? 'active': '';
-            return (
-                <li data-id={character.id} key={character.id} className={`list-group-item ${clazz}`} onClick={this.selectCharacter}>{character.name}</li>
-            )
-        });
-    }
-
     render() {
         const { characters, selectedCharacter } = this.state;
-        const  characterList = this.renderCharacterList()
+        const { getData } = this.props;
+        // const  characterList = this.renderCharacterList();
         return (
             <div className="characters-container">
-                <ul className="list-group">
-                        {characterList}
-                </ul>
-                <CharacterDetails selectedCharacterID = {selectedCharacter} />
+                <ItemsList list={characters} selectedItem={selectedCharacter} onItemClick={this.selectCharacter} />
+                <CharacterDetails selectedCharacterID = {selectedCharacter} getCharacterData ={getData} />
             </div>
         )
     }
 
 }
 
-export default CharacterList;
+CharactersList.propTypes = {
+    getData: PropTypes.object.isRequired
+}
+
+// CharactersList.defaultProps ={
+//     getData: {}
+// }
+
+
+export default CharactersList;
